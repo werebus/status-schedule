@@ -31,7 +31,7 @@ class StatusChanger
   def current
     profile = @client.get('users.profile.get').profile
     text = profile.fetch :status_text
-    emoji = profile.fetch(:status_emoji).delete(':').to_sym
+    emoji = emoji_sym(profile.fetch(:status_emoji))
     {text: text, emoji: emoji}
   end
 
@@ -44,12 +44,17 @@ class StatusChanger
 
   def emoji_id(emoji)
     case emoji
-    when /:[a-z_]+:/
-      emoji
+    when /:[A-Za-z_]+:/
+      emoji.downcase
     when nil, ''
       ''
     else
-      ":#{emoji}:"
+      ":#{emoji.downcase}:"
     end
+  end
+
+  def emoji_sym(emoji)
+    return emoji if emoji.is_a? Symbol
+    emoji.delete(':').to_sym
   end
 end
