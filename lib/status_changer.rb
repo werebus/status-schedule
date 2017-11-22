@@ -32,7 +32,7 @@ class StatusChanger
     profile = @client.get('users.profile.get').profile
     text = profile.fetch :status_text
     emoji = emoji_sym(profile.fetch(:status_emoji))
-    {text: text, emoji: emoji}
+    { text: text, emoji: emoji }
   end
 
   def set(text: nil, emoji: nil)

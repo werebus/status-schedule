@@ -6,7 +6,7 @@ unless defined? PROJECT_ROOT
 end
 
 def reload!
-  $".select{|path| path.start_with? PROJECT_ROOT}.each do |path|
+  $LOADED_FEATURES.select { |p| p.start_with? PROJECT_ROOT }.each do |path|
     load path
   end
 end
