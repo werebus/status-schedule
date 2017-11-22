@@ -14,7 +14,7 @@ require 'status_changer'
 namespace :status do
   changer = StatusChanger.new
   task :change, [:from, :text, :emoji] do |_task, args|
-    changer.change(from: args[:from].to_sym,
+    changer.change(from: (args[:from] ? args[:from].to_sym : ''),
                    to: {text: args[:text], emoji: args[:emoji]})
   end
 
