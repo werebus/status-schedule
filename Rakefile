@@ -4,11 +4,7 @@ Bundler.require
 this_dir = File.dirname(__FILE__)
 $LOAD_PATH.unshift File.join(this_dir, 'lib')
 
-config_file = File.join(this_dir, 'config', 'application.yml')
-app = Figaro::Application.new(path: config_file)
-app.load
-Figaro.application = app
-
+require 'env'
 require 'status_changer'
 
 namespace :status do
