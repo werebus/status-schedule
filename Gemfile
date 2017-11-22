@@ -2,5 +2,6 @@
 source 'https://rubygems.org'
 
 gem 'figaro'
+gem 'rake', require: false
 gem 'slack-ruby-client'
-gem 'whenever'
+gem 'whenever', require: false
