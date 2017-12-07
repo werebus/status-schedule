@@ -11,10 +11,7 @@ job_type :clear,
 job_type :set,
          format(rake_template, task: '"status:set[:text, :emoji]"')
 
-#every :day, at: '8:00' do
-#  change :status, from: '', text: 'At Transit', emoji: 'oncoming_bus'
-#end
-
-#every :day, at: '16:00' do
-#  clear :status
-#end
+status_schedule = File.join(File.dirname(__FILE__), 'status_schedule.rb')
+if File.exists? status_schedule
+  instance_eval(File.read(status_schedule), status_schedule)
+end

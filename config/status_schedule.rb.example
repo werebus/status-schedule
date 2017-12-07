@@ -1,0 +1,13 @@
+# frozen_string_literal: true
+
+#every :monday, at: '9:30' do
+#  set :status, text: 'At Parking', emoji: 'parking'
+#end
+
+#every :monday, at: '16:30' do
+#  change :status, from: 'parking', text: '', emoji: ''
+#end
+
+#every :month do
+#  clear :status
+#end
