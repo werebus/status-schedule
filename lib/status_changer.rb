@@ -5,8 +5,8 @@ require 'slack-ruby-client'
 class StatusChanger
   attr_accessor :client
 
-  def initialize
-    @token = ENV['slack_token']
+  def initialize(token = ENV['slack_token'])
+    @token = token
     @client = Slack::Web::Client.new(token: @token)
     @user = @client.auth_test.user_id
   end
@@ -40,6 +40,7 @@ class StatusChanger
   def set(text: nil, emoji: nil)
     profile = { status_text: text, status_emoji: emoji_id(emoji) }.to_json
     @client.post('users.profile.set', profile: profile)
+    current
   end
 
   private
