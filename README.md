@@ -53,7 +53,7 @@ or the `emoji` blank (or both, in which case it's the same as `clear`
 
 Rake tasks
 ----------
-You can also interact with the Rake tasks directly
+You can also interact with the Rake tasks directly:
 
 * `rake "status:change[from,text,emoji]"` - Change status conditionally. This
     works the same as the whenever job explained above.
@@ -109,7 +109,7 @@ sc.set
 `#change` conditionally sets your status if your current status meets a
 particular condition. It takes two keyword arguments:
 
-1. `from:` this is the condition, it's optional, but if specified it controlls
+1. `from:` this is the condition, it's optional, but if specified it controls
    whether or not to change your status:
 
     * If `from:` is a `String`, your status will only be changed if the **text**
@@ -118,7 +118,7 @@ particular condition. It takes two keyword arguments:
       of your current status is matched by that `Regexp`
     * If `from:` is a `Symbol`, your status will only be changed if the
       **emoji** of your current status is that `Symbol`
-    * If `from:` is ommitted or `nil`, your status wil be changed.
+    * If `from:` is omitted or `nil`, your status will be changed.
 
 2. `to:` this is a required argument. It should be a `Hash` (like that
    returned by `#current`, but it's passed through to `#set`, so all the
