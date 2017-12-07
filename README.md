@@ -117,15 +117,27 @@ particular condition. It takes two keyword arguments:
     * If `from:` is a `Regexp`, your status will only be changed if the **text**
       of your current status is matched by that `Regexp`
     * If `from:` is a `Symbol`, your status will only be changed if the
-      **emoji** of your current status is that symbol
+      **emoji** of your current status is that `Symbol`
     * If `from:` is ommitted or `nil`, your status wil be changed.
 
 2. `to:` this is a required argument. It should be a `Hash` (like that
    returned by `#current`, but it's passed through to `#set`, so all the
    same possible combinations can be used here including an empty `Hash`.
 
+```ruby
+# Only if 'Away'
+sc.change(from: 'Away', to: {text: 'Back', emoji: ':1234:'})
+
+# Clear status if :palm_tree
+sc.change(from: :palm_tree, to: {})
+
+# Quick break if working remotely
+sc.change(to: {text: 'Break', emoji: :clock1030}, from: /remote(ly?)$/i)
+```
+
 ---
 
 You can play with this API in irb by running `script/console`
+
 [whenever]: https://github.com/javan/whenever
 [lt]: https://api.slack.com/custom-integrations/legacy-tokens
