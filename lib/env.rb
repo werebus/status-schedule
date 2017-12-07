@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 config_file = File.join(File.dirname(__FILE__),
                         '..',
                         'config',

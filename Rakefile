@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'bundler'
 Bundler.require
 
@@ -19,9 +21,9 @@ namespace :status do
     emoji to use. All three arguments are optional. Ommiting the from argument
     means that your current status must be blank.
   DESC
-  task :change, [:from, :text, :emoji] do |_task, args|
+  task :change, %i[from text emoji] do |_task, args|
     changer.change(from: (args[:from] ? args[:from].to_sym : ''),
-                   to: {text: args[:text], emoji: args[:emoji]})
+                   to: { text: args[:text], emoji: args[:emoji] })
   end
 
   desc 'Clear your Slack status.'
@@ -36,7 +38,7 @@ namespace :status do
     second is the name of the emoji to use. Both arguments are optional.
     Ommiting both arguments is equivalent to `status:clear`
   DESC
-  task :set, [:text, :emoji] do |_task, args|
+  task :set, %i[text emoji] do |_task, args|
     changer.set(text: args[:text], emoji: args[:emoji])
   end
 end
